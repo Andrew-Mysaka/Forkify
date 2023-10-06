@@ -3109,9 +3109,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _viewJs = require("./View.js");
 var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
-var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvg = require("url:../../img/icons.svg"); // Parcel 2
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
-class paginationView extends (0, _viewJsDefault.default) {
+class PaginationView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".pagination");
     addHandlerClick(handler) {
         this._parentElement.addEventListener("click", function(e) {
@@ -3126,53 +3126,42 @@ class paginationView extends (0, _viewJsDefault.default) {
         const numPages = Math.ceil(this._data.results.length / this._data.resultPerPage);
         // Page 1, and there are other pages
         if (curPage === 1 && numPages > 1) return `
-      <button class='btn--inline pagination__btn--next'>
-      <span>Page ${curPage + 1}</span>
-        <svg class='search__icon'>
-          <use href='${0, _iconsSvgDefault.default}#icon-arrow-right'></use>
-        </svg>
-      </button>;
+        <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">
+          <span>Page ${curPage + 1}</span>
+          <svg class="search__icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+          </svg>
+        </button>
       `;
         // Last page
         if (curPage === numPages && numPages > 1) return `
-      <button data-goto="${curPage - 1}" class='btn--inline pagination__btn--prev'>
-         <svg class='search__icon'>
-             <use href='${0, _iconsSvgDefault.default}#icon-arrow-left'></use>
-         </svg>
-        <span>Page ${curPage - 1}</span>
-     </button>;
+        <button data-goto="${curPage - 1}" class="btn--inline pagination__btn--prev">
+          <svg class="search__icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
+          </svg>
+          <span>Page ${curPage - 1}</span>
+        </button>
       `;
         // Other page
         if (curPage < numPages) return `
-      <button data-goto="${curPage - 1}" class='btn--inline pagination__btn--prev'>
-         <svg class='search__icon'>
-             <use href='${0, _iconsSvgDefault.default}#icon-arrow-left'></use>
-         </svg>
-        <span>Page ${curPage - 1}</span>
-      </button>;
-      <button data-goto="${curPage + 1}" class='btn--inline pagination__btn--next'>
-      <span>Page ${curPage + 1}</span>
-        <svg class='search__icon'>
-          <use href='${0, _iconsSvgDefault.default}#icon-arrow-right'></use>
-        </svg>
-      </button>;
+        <button data-goto="${curPage - 1}" class="btn--inline pagination__btn--prev">
+          <svg class="search__icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
+          </svg>
+          <span>Page ${curPage - 1}</span>
+        </button>
+        <button data-goto="${curPage + 1}" class="btn--inline pagination__btn--next">
+          <span>Page ${curPage + 1}</span>
+          <svg class="search__icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+          </svg>
+        </button>
       `;
         // Page 1, and there are NO other pages
         return "";
     }
 }
-exports.default = new paginationView(); // <button class='btn--inline pagination__btn--prev'>
- //   <svg class='search__icon'>
- //     <use href='src/img/icons.svg#icon-arrow-left'></use>
- //   </svg>
- //   <span>Page 1</span>
- // </button>;
- // <button class='btn--inline pagination__btn--next'>
- //   <span>Page 3</span>
- //   <svg class='search__icon'>
- //     <use href='src/img/icons.svg#icon-arrow-right'></use>
- //   </svg>
- // </button>;
+exports.default = new PaginationView();
 
 },{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aD7Zm","aenu9"], "aenu9", "parcelRequire3a11")
 
